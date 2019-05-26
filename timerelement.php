@@ -73,11 +73,14 @@ final class TimerElementExtension {
 	}
 
 	function frontend_assets_scripts(){
+		wp_enqueue_script("flipclock-js",plugins_url("/assets/js/flipclock.min.js",__FILE__),array('jquery'),'1.0',true);
+		wp_enqueue_script("timerelement-helper-js",plugins_url("/assets/js/scripts.js",__FILE__),array('jquery','flipclock-js'),time(),true);
 	}
 
 
 
 	function frontend_assets_styles() {
+		wp_enqueue_style("flipclock-css",plugins_url("/assets/css/flipclock.css",__FILE__));
 	}
 
 
@@ -90,7 +93,9 @@ final class TimerElementExtension {
 	}
 
 	public function init_widgets() {
+		require_once (__DIR__."/widgets/timer-widget.php");
 		// Register widget
+		Plugin::instance()->widgets_manager->register_widget_type(new Elementor_Timer_Widget());
 	}
 
 
