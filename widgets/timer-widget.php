@@ -35,9 +35,6 @@ class Elementor_Timer_Widget extends \Elementor\Widget_Base {
 
 	protected function render() {
 		$settings = $this->get_settings_for_display();
-		?>
-		<div class="clock"></div>
-<?php
 	}
 
 	/*protected function _content_template() {
